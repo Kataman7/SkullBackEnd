@@ -20,13 +20,20 @@ public class GameService implements GameCommandHandler {
 
     @Override
     public void handle(GameEvent event) {
-        // logique jeu
-        event.apply(game);
-
-        // sauvegarde
-        saver.save(game);
-
-        // notification
-        broadcaster.broadcast(event.toString());
+        // logique du jeu
+        boolean allRulesApplicable = event.getRules().stream()
+                .allMatch(gameRule -> {
+                    if (!gameRule.isApplicable(game)) {
+                        broadcaster.broadcast(gameRule.toString());
+                        return false;
+                    }
+                    return true;
+                });
+        if (allRulesApplicable) {
+            event.apply(game);
+            saver.save(game);
+            // notification
+            broadcaster.broadcast(event.toString());
+        }
     }
 }
