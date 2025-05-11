@@ -1,0 +1,18 @@
+package adapters.out;
+
+import application.port.out.GameStateSaver;
+import domain.model.Board;
+
+public class InMemoryGameSaver implements GameStateSaver {
+
+    private Board lastSavedGame;
+
+    @Override
+    public void save(Board game) {
+        this.lastSavedGame = game;
+    }
+
+    public Board getLastSavedGame() {
+        return lastSavedGame;
+    }
+}
