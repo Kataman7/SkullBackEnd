@@ -31,6 +31,10 @@ public class Player {
         return name;
     }
 
+    public int getDeckSize() {
+        return deck.size();
+    }
+
     public void drawCard(int index) {
         deck.push(hand.remove(index));
     }

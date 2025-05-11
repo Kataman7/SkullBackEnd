@@ -4,7 +4,7 @@ import domain.model.Board;
 
 public class PlayerTurnRule extends PlayerRule
 {
-    protected PlayerTurnRule(String playerName) {
+    public PlayerTurnRule(String playerName) {
         super(playerName);
     }
 

@@ -2,14 +2,24 @@ package domain.events;
 
 import domain.model.Board;
 import domain.model.Player;
+import domain.rules.*;
 
-public class PickCardEvent extends PlayerEvent
-{
+import java.util.List;
+
+public class PickCardEvent extends PlayerEvent {
     private final String targetName;
 
     public PickCardEvent(String playerName, String targetName) {
         super(playerName);
         this.targetName = targetName;
+
+        super.getRules().addAll(List.of(
+                new PlayerTurnRule(super.getPlayerName()),
+                new GameEmptyRule(),
+                new ValidPlayerRule(super.getPlayerName()),
+                new ValidPlayerRule(targetName),
+                new DeckNotEmptyRule(targetName)
+        ));
     }
 
     @Override

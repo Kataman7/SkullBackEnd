@@ -1,9 +1,20 @@
 package domain.events;
 
 import domain.model.Board;
+import domain.rules.GameRule;
 
-public interface GameEvent
+import java.util.List;
+
+public abstract class GameEvent
 {
-    void apply(Board board);
-    String toString();
+    private List<GameRule> rules;
+
+    public void apply(Board board)
+    {
+
+    }
+
+    public List<GameRule> getRules() {
+        return rules;
+    }
 }

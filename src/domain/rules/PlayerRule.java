@@ -6,7 +6,7 @@ public abstract class PlayerRule implements GameRule
 {
     private final String playerName;
 
-    protected PlayerRule(String playerName) {
+    public PlayerRule(String playerName) {
         this.playerName = playerName;
     }
 

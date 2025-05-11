@@ -22,7 +22,7 @@ public class ConsoleCommandAdapter implements GameCommandHandler {
             String command = scanner.nextLine();
             GameEvent event = parseCommand(command);
             if (event != null) {
-                handler.handle(event);  // Délégation à GameService (ou autre implémentation)
+                handler.handle(event);
             } else {
                 System.out.println("Commande invalide.");
             }
