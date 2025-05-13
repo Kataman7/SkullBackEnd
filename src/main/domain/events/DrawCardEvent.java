@@ -1,8 +1,11 @@
 package main.domain.events;
 
+import main.domain.cards.Card;
 import main.domain.model.Board;
+import main.domain.model.Player;
 import main.domain.rules.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrawCardEvent extends PlayerEvent
@@ -19,13 +22,15 @@ public class DrawCardEvent extends PlayerEvent
                new ValidPlayerRule(getPlayerName()),
                new PlayerTurnRule(getPlayerName()),
                new NotRule(new InBetRule()),
-               new ValidHandSize(getPlayerName())
+               new NotRule(new HandEmptyRule(getPlayerName()))
         ));
     }
 
     @Override
     public void apply(Board board)
     {
-        board.getPlayers().getCurrent().drawCard(index);
+        Player player = board.getPlayers().getByName(getPlayerName());
+        List<Card> hand = player.getHand();
+        board.getPlayers().getCurrent().getDeck().push(hand.remove(index));
     }
 }

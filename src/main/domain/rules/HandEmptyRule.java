@@ -3,13 +3,13 @@ package main.domain.rules;
 import main.domain.model.Board;
 import main.domain.model.Player;
 
-public class DeckEmptyRule extends PlayerRule {
-
-    public DeckEmptyRule()
+public class HandEmptyRule extends PlayerRule
+{
+    public HandEmptyRule()
     {
         super(null);
     }
-    public DeckEmptyRule(String playerName)
+    public HandEmptyRule(String playerName)
     {
         super(playerName);
     }
@@ -19,7 +19,6 @@ public class DeckEmptyRule extends PlayerRule {
         Player player = getPlayerName() == null
                 ? board.getPlayers().getCurrent()
                 : board.getPlayers().getByName(getPlayerName());
-
-        return player.getDeckSize() == 0;
+        return player.getHandSize() == 0;
     }
 }

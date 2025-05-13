@@ -1,13 +1,16 @@
 package main.domain.model;
 
+import main.domain.cards.Card;
+import main.domain.cards.Flower;
+import main.domain.cards.Skull;
 import main.domain.enums.CardType;
 import java.util.*;
 
 public class Player
 {
     private final String name;
-    private final List<CardType> hand;
-    private final Deque<CardType> deck;
+    private final List<Card> hand;
+    private final Deque<Card> deck;
     private boolean isSkiping;
     private boolean isDead;
     private int score;
@@ -17,9 +20,9 @@ public class Player
     {
         this.name = name;
         hand = new ArrayList<>();
-        hand.add(CardType.SKULL);
+        hand.add(new Skull());
         for (int i = 0; i < 3; i++)
-            hand.add(CardType.FLOWER);
+            hand.add(new Flower());
         deck = new ArrayDeque<>();
         isSkiping = false;
         isDead = false;
@@ -40,6 +43,14 @@ public class Player
     public int getDeckSize() {
         return deck.size();
     }
+    public Deque<Card> getDeck()
+    {
+        return deck;
+    }
+    public List<Card> getHand()
+    {
+        return hand;
+    }
     public int getHandSize()
     {
         return hand.size();
@@ -51,7 +62,12 @@ public class Player
         isDead = dead;
     }
 
-
+    public void looseRandomCard()
+    {
+        hand.addAll(deck);
+        deck.clear();
+        hand.remove(new Random().nextInt(hand.size()));
+    }
 
     public void drawCard(int index) {
         deck.push(hand.remove(index));

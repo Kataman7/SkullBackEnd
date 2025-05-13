@@ -5,10 +5,6 @@ import main.application.service.GameService;
 import main.domain.events.JoinEvent;
 import main.domain.events.LeaveEvent;
 import main.domain.model.Board;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestSkull

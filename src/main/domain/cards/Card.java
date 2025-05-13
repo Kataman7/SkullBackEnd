@@ -1,8 +1,28 @@
 package main.domain.cards;
 
+import main.domain.events.GameEvent;
 import main.domain.model.Board;
 
-public interface Card
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Card
 {
-    void apply(Board board);
+    private final List<GameEvent> events;
+
+    public Card() {
+        this.events = new ArrayList<>();
+    }
+
+    void apply(Board board) {
+        events.forEach(event -> {
+            if (event.getRules().stream().allMatch(rule -> rule.isApplicable(board))) {
+                event.apply(board);
+            }
+        });
+    }
+
+    public List<GameEvent> getEvents() {
+        return events;
+    }
 }
