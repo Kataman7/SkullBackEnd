@@ -1,8 +1,8 @@
 package main;
 
 import main.adapters.in.ConsoleCommandAdapter;
-import main.adapters.out.ConsoleBroadcaster;
-import main.adapters.out.ConsoleGameSaver;
+import main.adapters.out.broadcaster.ConsoleBroadcaster;
+import main.adapters.out.saver.ConsoleGameSaver;
 import main.application.port.out.GameStateBroadcaster;
 import main.application.port.out.GameStateSaver;
 import main.application.service.GameService;

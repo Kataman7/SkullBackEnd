@@ -31,6 +31,7 @@ public class GameService implements GameCommandHandler {
                 });
         if (allRulesApplicable) {
             event.apply(game);
+
             saver.save(game);
             // notification
             broadcaster.broadcast(event.toString());

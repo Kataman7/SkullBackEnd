@@ -1,4 +1,4 @@
-package main.adapters.out;
+package main.adapters.out.saver;
 
 import main.application.port.out.GameStateSaver;
 import main.domain.model.Board;
