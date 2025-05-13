@@ -37,10 +37,12 @@ public class Player
     {
         return score;
     }
-    public boolean getIsDead() {
+    public boolean getIsDead()
+    {
         return isDead;
     }
-    public int getDeckSize() {
+    public int getDeckSize()
+    {
         return deck.size();
     }
     public Deque<Card> getDeck()
@@ -58,38 +60,22 @@ public class Player
     public void setScore(int score) {
         this.score = score;
     }
-    public void setIsDead(boolean dead) {
+    public void setIsDead(boolean dead)
+    {
         isDead = dead;
     }
-
-    public void looseRandomCard()
-    {
-        hand.addAll(deck);
-        deck.clear();
-        hand.remove(new Random().nextInt(hand.size()));
-    }
-
-    public void drawCard(int index) {
-        deck.push(hand.remove(index));
-    }
-
-    public CardType pickCard(Player player) {
-        CardType card = player.deck.removeFirst();
-        player.hand.add(card);
-        return card;
-    }
-
     //compare uniquement le nom lors des égalités
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
         return Objects.equals(name, player.name);
     }
-
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(name);
     }
 }

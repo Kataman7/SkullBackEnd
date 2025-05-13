@@ -6,6 +6,7 @@ import main.domain.model.Player;
 import main.domain.rules.*;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class DrawCardEvent extends PlayerEvent
@@ -31,6 +32,7 @@ public class DrawCardEvent extends PlayerEvent
     {
         Player player = board.getPlayers().getByName(getPlayerName());
         List<Card> hand = player.getHand();
-        board.getPlayers().getCurrent().getDeck().push(hand.remove(index));
+        Deque<Card> deck = player.getDeck();
+        deck.push(hand.remove(index));
     }
 }
