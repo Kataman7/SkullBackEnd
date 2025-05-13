@@ -9,6 +9,7 @@ import main.domain.events.JoinEvent;
 import main.domain.events.LeaveEvent;
 import main.domain.model.Board;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,8 +18,6 @@ public class TestSkull
 {
     private static GameService gameService;
     private static Board board;
-    private static InMemoryGameSaver saver;
-    private static InMemoryBroardCaster broardCaster;
 
     @BeforeAll
     public static void setUp()
@@ -26,7 +25,7 @@ public class TestSkull
         board = new Board();
         InMemoryGameSaver saver = new InMemoryGameSaver();
         InMemoryBroardCaster broardCaster = new InMemoryBroardCaster();
-        gameService = new GameService(board, saver , broardCaster);
+        gameService = new GameService(board, saver, broardCaster);
     }
 
     @Test

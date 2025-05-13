@@ -20,4 +20,8 @@ public abstract class GameEvent
     public List<GameRule> getRules() {
         return rules;
     }
+
+    public boolean requireNextTurnEvent() {
+        return false;
+    }
 }
