@@ -1,11 +1,10 @@
 package main.domain.model;
 
 import main.domain.enums.CardType;
-
 import java.util.*;
 
-public class Player {
-
+public class Player
+{
     private final String name;
     private final List<CardType> hand;
     private final Deque<CardType> deck;
@@ -14,7 +13,8 @@ public class Player {
     private int score;
     private int winsCount;
 
-    public Player(String name) {
+    public Player(String name)
+    {
         this.name = name;
         hand = new ArrayList<>();
         hand.add(CardType.SKULL);
@@ -26,16 +26,32 @@ public class Player {
         score = 0;
         winsCount = 0;
     }
-
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
-
+    public int getScore()
+    {
+        return score;
+    }
+    public boolean getIsDead() {
+        return isDead;
+    }
     public int getDeckSize() {
         return deck.size();
     }
+    public int getHandSize()
+    {
+        return hand.size();
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setIsDead(boolean dead) {
+        isDead = dead;
+    }
 
-    public int getHandSize() { return hand.size(); }
+
 
     public void drawCard(int index) {
         deck.push(hand.remove(index));

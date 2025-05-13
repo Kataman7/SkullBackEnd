@@ -8,12 +8,14 @@ import java.util.List;
 
 public abstract class GameEvent
 {
-    private List<GameRule> rules;
+    private final List<GameRule> rules;
 
-    public void apply(Board board)
+    public GameEvent()
     {
-        rules = new ArrayList<GameRule>();
+        rules = new ArrayList<>();
     }
+
+    public abstract void apply(Board board);
 
     public List<GameRule> getRules() {
         return rules;
