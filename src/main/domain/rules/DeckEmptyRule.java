@@ -22,4 +22,9 @@ public class DeckEmptyRule extends PlayerRule {
 
         return player.getDeckSize() == 0;
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.DECK_EMPTY.ordinal();
+    }
 }

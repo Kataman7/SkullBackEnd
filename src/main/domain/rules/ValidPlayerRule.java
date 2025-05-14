@@ -12,4 +12,9 @@ public class ValidPlayerRule extends PlayerRule
     public boolean isApplicable(Board board) {
         return board.getPlayers().getByName(super.getPlayerName()) != null;
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.VALID_PLAYER.ordinal();
+    }
 }

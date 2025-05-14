@@ -28,7 +28,7 @@ public class PickCardEvent extends PlayerEvent {
 
         Player targetPlayer = board.getPlayers().getByName(targetName);
         Card card = targetPlayer.getDeck().pop();
-
         targetPlayer.getHand().add(card);
+        card.apply(board);
     }
 }

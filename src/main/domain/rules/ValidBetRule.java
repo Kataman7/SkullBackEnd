@@ -14,4 +14,9 @@ public class ValidBetRule implements GameRule
     public boolean isApplicable(Board board) {
         return betValue > 0 && betValue > board.getBetValue();
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.VALID_BET.ordinal();
+    }
 }

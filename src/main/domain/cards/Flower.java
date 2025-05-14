@@ -1,10 +1,7 @@
 package main.domain.cards;
 
-import main.domain.events.GameEvent;
 import main.domain.events.WinBetEvent;
 import main.domain.model.Board;
-import main.domain.rules.InBetRule;
-import main.domain.rules.NotRule;
 
 import java.util.List;
 

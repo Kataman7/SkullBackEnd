@@ -12,4 +12,9 @@ public class PlayerTurnRule extends PlayerRule
     public boolean isApplicable(Board board) {
         return board.getPlayers().getCurrent().getName().equals(getPlayerName());
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.PLAYER_TURN.ordinal();
+    }
 }

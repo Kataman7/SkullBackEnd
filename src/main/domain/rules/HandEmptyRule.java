@@ -21,4 +21,9 @@ public class HandEmptyRule extends PlayerRule
                 : board.getPlayers().getByName(getPlayerName());
         return player.getHandSize() == 0;
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.HAND_EMPTY.ordinal();
+    }
 }

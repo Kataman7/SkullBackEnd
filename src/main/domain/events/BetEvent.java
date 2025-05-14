@@ -20,7 +20,7 @@ public class BetEvent extends PlayerEvent
                 new DeckEmptyRule(getPlayerName()),
                 new ValidBetRule(betValue),
                 new NotRule(new ValidBettorRule(playerName)),
-                new NotRule(new PlayerSkippingRule(getPlayerName()))
+                new NotRule(new PlayerTurnRule(getPlayerName()))
         ));
     }
 

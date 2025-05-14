@@ -8,4 +8,9 @@ public class GameFullRule implements GameRule
     public boolean isApplicable(Board board) {
         return board.getPlayers().size() <= 16;
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.GAME_FULL.ordinal();
+    }
 }

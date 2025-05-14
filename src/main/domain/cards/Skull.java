@@ -5,17 +5,18 @@ import main.domain.model.Board;
 
 import java.util.List;
 
-public class Skull extends Card {
-
-    public Skull() {
+public class Skull extends Card
+{
+    public Skull()
+    {
         super();
         getEvents().addAll(List.of(
                 new LooseCardEvent()
         ));
     }
-
     @Override
-    public void apply(Board board) {
+    public void apply(Board board)
+    {
         super.apply(board);
     }
 }

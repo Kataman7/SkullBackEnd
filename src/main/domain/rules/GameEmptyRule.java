@@ -8,4 +8,11 @@ public class GameEmptyRule implements GameRule
     public boolean isApplicable(Board board) {
         return board.getPlayers().size() < 2;
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.GAME_EMPTY.ordinal();
+    }
+
+
 }

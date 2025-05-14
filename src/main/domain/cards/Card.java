@@ -14,7 +14,7 @@ public abstract class Card
         this.events = new ArrayList<>();
     }
 
-    void apply(Board board) {
+    public void apply(Board board) {
         events.forEach(event -> {
             if (event.getRules().stream().allMatch(rule -> rule.isApplicable(board))) {
                 event.apply(board);
