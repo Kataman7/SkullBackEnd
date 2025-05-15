@@ -1,5 +1,6 @@
 package main.domain.events;
 
+import main.domain.cards.Card;
 import main.domain.model.Board;
 import main.domain.model.Player;
 import main.domain.rules.*;
@@ -24,7 +25,10 @@ public class PickCardEvent extends PlayerEvent {
 
     @Override
     public void apply(Board board) {
+
         Player targetPlayer = board.getPlayers().getByName(targetName);
-        board.getPlayers().getCurrent().pickCard(targetPlayer);
+        Card card = targetPlayer.getDeck().pop();
+        targetPlayer.getHand().add(card);
+        card.apply(board);
     }
 }

@@ -12,4 +12,9 @@ public class ValidBettorRule extends PlayerRule
     public boolean isApplicable(Board board) {
         return board.getBettor().getName().equals(getPlayerName());
     }
+
+    @Override
+    public int getCode() {
+        return RuleCodes.VALID_BETTOR.ordinal();
+    }
 }

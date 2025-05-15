@@ -4,7 +4,7 @@ import main.domain.model.Board;
 
 public class NotRule implements GameRule
 {
-    private GameRule rule;
+    private final GameRule rule;
 
     public NotRule(GameRule rule) {
         this.rule = rule;
@@ -16,7 +16,7 @@ public class NotRule implements GameRule
     }
 
     @Override
-    public String toString() {
-        return "!" + rule.toString();
+    public int getCode() {
+        return rule.getCode() * -1;
     }
 }

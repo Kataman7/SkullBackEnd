@@ -1,4 +1,4 @@
-package main.adapters.out;
+package main.adapters.out.broadcaster;
 
 import main.application.port.out.GameStateBroadcaster;
 

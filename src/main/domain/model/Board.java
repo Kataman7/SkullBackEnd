@@ -14,9 +14,9 @@ public class Board {
         betValue = 0;
     }
 
-    public boolean addPlayer(String playerName)
+    public void addPlayer(String playerName)
     {
-        return players.add(new Player(playerName));
+        players.add(new Player(playerName));
     }
 
     public PlayerList getPlayers() {
