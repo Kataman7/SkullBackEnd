@@ -47,6 +47,12 @@ public class Player {
         return card;
     }
 
+    public void clearDeck()
+    {
+        this.hand.addAll(deck);
+        deck.clear();
+    }
+
     //compare uniquement le nom lors des égalités
     @Override
     public boolean equals(Object o) {
