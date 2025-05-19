@@ -4,6 +4,7 @@ import main.adapters.out.broadcaster.InMemoryBroardCaster;
 import main.adapters.out.saver.InMemoryGameSaver;
 import main.application.port.out.GameStateSaver;
 import main.application.service.GameService;
+import main.domain.events.ClearDecks;
 import main.domain.events.DrawCardEvent;
 import main.domain.events.JoinEvent;
 import main.domain.events.LeaveEvent;
@@ -36,11 +37,25 @@ public class TestSkull
 
         new DrawCardEvent("Player1", 1).apply(board);
         assertEquals(1, board.getPlayers().getDeckSize());
-        assertEquals(3, board.getPlayers().getByName("Player1").getDeckSize());
+        assertEquals(3, board.getPlayers().getByName("Player1").getHandSize());
 
         new DrawCardEvent("Player2", 1).apply(board);
         assertEquals(2, board.getPlayers().getDeckSize());
-        assertEquals(3, board.getPlayers().getByName("Player2").getDeckSize());
+        assertEquals(3, board.getPlayers().getByName("Player2").getHandSize());
+    }
+
+    @Test
+    public void clearDecksTest()
+    {
+        gameService.handle(new JoinEvent("Player1"));
+        gameService.handle(new JoinEvent("Player2"));
+
+        new DrawCardEvent("Player1", 1).apply(board);
+        new DrawCardEvent("Player2", 1).apply(board);
+        new ClearDecks().apply(board);
+
+        assertEquals(0, board.getPlayers().getDeckSize());
+        assertEquals("Player1", board.getPlayers().getCurrent().getName());
     }
 
     @Test

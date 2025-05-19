@@ -6,14 +6,12 @@ import main.domain.model.Player;
 public class ClearDecks extends GameEvent
 {
     @Override
-    public void apply(Board board)
-    {
-        int i = board.getPlayers().size();
-        Player player = board.getPlayers().getCurrent();
-        while (i < board.getPlayers().size())
-        {
+    public void apply(Board board) {
+        int size = board.getPlayers().size();
+        for (int i = 0; i < size; i++) {
+            Player player = board.getPlayers().getCurrent();
             player.clearDeck();
-            player = board.getPlayers().next();
+            board.getPlayers().next();
         }
     }
 }

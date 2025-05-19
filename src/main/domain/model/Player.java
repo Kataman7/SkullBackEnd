@@ -3,7 +3,6 @@ package main.domain.model;
 import main.domain.cards.Card;
 import main.domain.cards.Flower;
 import main.domain.cards.Skull;
-import main.domain.enums.CardType;
 import java.util.*;
 
 public class Player
@@ -63,6 +62,11 @@ public class Player
     public void setIsDead(boolean dead)
     {
         isDead = dead;
+    }
+    public void clearDeck()
+    {
+        hand.addAll(deck);
+        deck.clear();
     }
     //compare uniquement le nom lors des égalités
     @Override
