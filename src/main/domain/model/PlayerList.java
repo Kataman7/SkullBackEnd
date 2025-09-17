@@ -11,11 +11,4 @@ public class PlayerList extends CircularList<Player>
                 .findFirst()
                 .orElse(null);
     }
-
-    public int getDeckSize()
-    {
-        return super.items.stream()
-                .mapToInt(Player::getDeckSize)
-                .sum();
-    }
 }

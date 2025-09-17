@@ -1,4 +1,4 @@
-package main.domain.events;
+package main.domain.events.game;
 
 import main.domain.model.Board;
 import main.domain.rules.GameRule;

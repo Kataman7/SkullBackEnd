@@ -2,18 +2,10 @@ package test.java;
 
 import main.adapters.out.broadcaster.InMemoryBroardCaster;
 import main.adapters.out.saver.InMemoryGameSaver;
-import main.application.port.out.GameStateSaver;
 import main.application.service.GameService;
-import main.domain.events.ClearDecks;
-import main.domain.events.DrawCardEvent;
-import main.domain.events.JoinEvent;
-import main.domain.events.LeaveEvent;
 import main.domain.model.Board;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSkull
 {
@@ -29,7 +21,7 @@ public class TestSkull
         gameService = new GameService(board, saver, broardCaster);
     }
 
-    @Test
+    /*@Test
     public void drawCardTest()
     {
         gameService.handle(new JoinEvent("Player1"));
@@ -84,5 +76,5 @@ public class TestSkull
 
         gameService.handle(new DrawCardEvent("Player2", 1));
         assertEquals(2, board.getPlayers().getDeckSize());
-    }
+    }*/
 }

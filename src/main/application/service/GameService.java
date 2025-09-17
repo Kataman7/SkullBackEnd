@@ -4,7 +4,7 @@ import main.application.port.in.GameCommandHandler;
 import main.application.port.out.GameStateBroadcaster;
 import main.application.port.out.GameStateSaver;
 import main.domain.model.Board;
-import main.domain.events.GameEvent;
+import main.domain.events.game.GameEvent;
 
 public class GameService implements GameCommandHandler {
 
@@ -22,19 +22,14 @@ public class GameService implements GameCommandHandler {
     public void handle(GameEvent event) {
         // logique du jeu
         boolean allRulesApplicable = event.getRules().stream()
-                .allMatch(gameRule -> {
-                    if (!gameRule.isApplicable(game)) {
-                        broadcaster.broadcast(gameRule.toString());
-                        return false;
-                    }
-                    return true;
-                });
-        if (allRulesApplicable) {
-            event.apply(game);
-
-            saver.save(game);
-            // notification
-            broadcaster.broadcast(event.toString());
+                .allMatch(gameRule -> gameRule.isApplicable(game));
+        if (!allRulesApplicable) {
+            broadcaster.broadcast("Une ou plusieurs règles ne sont pas applicables.");
+            return;
         }
+        event.apply(game);
+        saver.save(game);
+        // notification
+        broadcaster.broadcast(event.toString());
     }
 }

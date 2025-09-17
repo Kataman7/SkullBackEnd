@@ -1,4 +1,4 @@
-package main.domain.events;
+package main.domain.events.game;
 
 public abstract class PlayerEvent extends GameEvent {
     private final String playerName;
