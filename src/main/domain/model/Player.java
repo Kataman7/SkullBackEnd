@@ -6,11 +6,17 @@ public class Player
 {
     private final String name;
     private int score;
+    private ArrayList<Build> builds;
+    private ArrayList<Builder> builders;
+    private int money;
 
     public Player(String name)
     {
         this.name = name;
         score = 0;
+        builds = new ArrayList<>();
+        builders = new ArrayList<>();
+        money = 0;
     }
     public String getName()
     {
@@ -38,4 +44,20 @@ public class Player
     {
         return Objects.hash(name);
     }
+
+    public ArrayList<Build> getBuilds() {
+        return builds;
+    }
+    public ArrayList<Builder> getBuilders() {
+        return builders;
+    }
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+
 }

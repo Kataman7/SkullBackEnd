@@ -6,5 +6,6 @@ public enum RuleCodes
     GAME_FULL,
     PLAYER_TURN,
     VALID_PLAYER,
-    INVALID_EVENT
+    INVALID_EVENT,
+    PLAYER_HAS_ENOUGHT_MONEY,
 }
