@@ -12,5 +12,4 @@ public abstract class PlayerEvent extends GameEvent {
     {
         return playerName;
     }
-
 }

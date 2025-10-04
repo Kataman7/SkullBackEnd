@@ -5,14 +5,17 @@ import main.domain.model.Build;
 import main.domain.model.Builder;
 import main.domain.rules.*;
 
+import javax.json.Json;
 import java.util.List;
 
 public class BuyBuildEvent extends PlayerEvent{
-    private int value;
+    private final int value;
+    private final int cost;
 
     public BuyBuildEvent(String playerName, int value, int cost) {
         super(playerName);
         this.value = value;
+        this.cost = cost;
 
         super.getRules().addAll(List.of(
                 new ValidPlayerRule(getPlayerName()),
@@ -32,8 +35,14 @@ public class BuyBuildEvent extends PlayerEvent{
     }
 
     @Override
-    public String toString() {
-        return getPlayerName() + " buys a build.";
+    public String toJson() {
+        return Json.createObjectBuilder()
+                .add("event", "buyBuild")
+                .add("player", getPlayerName())
+                .add("value", value)
+                .add("cost", cost)
+                .build()
+                .toString();
     }
 
 }

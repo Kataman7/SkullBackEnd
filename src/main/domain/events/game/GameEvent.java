@@ -24,4 +24,6 @@ public abstract class GameEvent
     public boolean requireNextTurnEvent() {
         return false;
     }
+
+    public abstract String toJson();
 }

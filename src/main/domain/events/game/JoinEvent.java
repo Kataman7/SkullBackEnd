@@ -6,6 +6,7 @@ import main.domain.rules.GameFullRule;
 import main.domain.rules.NotRule;
 import main.domain.rules.ValidPlayerRule;
 
+import javax.json.Json;
 import java.util.List;
 
 public class JoinEvent extends PlayerEvent
@@ -26,7 +27,11 @@ public class JoinEvent extends PlayerEvent
     }
 
     @Override
-    public String toString() {
-        return super.getPlayerName() + " join the room.";
+    public String toJson() {
+        return Json.createObjectBuilder()
+                .add("event", "join")
+                .add("player", getPlayerName())
+                .build()
+                .toString();
     }
 }

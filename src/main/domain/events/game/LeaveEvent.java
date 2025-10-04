@@ -4,6 +4,7 @@ import main.domain.model.Board;
 import main.domain.model.Player;
 import main.domain.rules.ValidPlayerRule;
 
+import javax.json.Json;
 import java.util.List;
 
 public class LeaveEvent extends PlayerEvent
@@ -22,5 +23,14 @@ public class LeaveEvent extends PlayerEvent
     public void apply(Board board)
     {
         board.getPlayers().remove(new Player(super.getPlayerName()));
+    }
+
+    @Override
+    public String toJson() {
+        return Json.createObjectBuilder()
+                .add("event", "leave")
+                .add("player", getPlayerName())
+                .build()
+                .toString();
     }
 }
