@@ -60,54 +60,45 @@ public class WebSocketGameAdapter extends WebSocketServer {
         System.out.println("Serveur WebSocket démarré sur le port " + getPort());
     }
 
-    private GameEvent parseCommand(String command, WebSocket conn) {
-        // Vérification de commande vide
-        if (command == null || command.trim().isEmpty()) {
-            conn.send("Commande invalide. Utilisez 'help' pour voir les commandes disponibles.");
+    private GameEvent parseCommand(String message, WebSocket conn) {
+        if (message == null || message.trim().isEmpty()) {
+            conn.send("Message vide reçu.");
             return null;
         }
 
-        // Découpage et analyse de la commande
-        String[] parts = command.trim().split("\\s+", 2); // Limite à 2 parties pour préserver les espaces
-        String action = parts[0].toLowerCase();
-
-        // Commande d'aide
-        if (action.equals("help")) {
-            String helpMessage = "Commandes disponibles :\n" +
-                    "- join [nom] : Rejoindre la partie\n" +
-                    "- leave [nom] : Quitter la partie\n" +
-                    "- createServer : Créer un nouveau serveur de jeu";
-            conn.send(helpMessage);
+        javax.json.JsonObject jsonObject;
+        try (javax.json.JsonReader reader = javax.json.Json.createReader(new java.io.StringReader(message))) {
+            jsonObject = reader.readObject();
+        } catch (Exception e) {
+            conn.send("Format JSON invalide : " + e.getMessage());
             return null;
         }
 
-        // Commande pour créer un nouveau serveur
-        if (action.equals("createserver")) {
-            return new CreateEvent();
-        }
-
-        // Commandes qui nécessitent un nom de joueur
-        if (parts.length < 2) {
-            conn.send("Format invalide. Utilisez '[commande] [argument]' ou 'help'.");
+        String eventType = jsonObject.getString("event", "");
+        if (eventType.isEmpty()) {
+            conn.send("Champ 'event' manquant dans le JSON.");
             return null;
         }
 
-        String playerName = parts[1].trim();
-        if (playerName.isEmpty()) {
-            conn.send("Nom de joueur requis.");
-            return null;
-        }
-
-        // Traitement selon le type de commande
-        switch (action) {
-            case "join":
+        switch (eventType.toLowerCase()) {
+            case "join": {
+                String playerName = jsonObject.getString("playerName", "");
+                // Ajoute d'autres paramètres optionnels ici si besoin
                 connectedPlayers.put(conn, playerName);
                 return new JoinEvent(playerName);
-            case "leave":
+            }
+            case "leave": {
+                String playerName = jsonObject.getString("playerName", "");
+                // Ajoute d'autres paramètres optionnels ici si besoin
                 connectedPlayers.remove(conn);
                 return new LeaveEvent(playerName);
+            }
+            case "createserver": {
+                // Paramètres optionnels pour createServer si besoin
+                return new CreateEvent();
+            }
             default:
-                conn.send("Commande inconnue : " + action + ". Utilisez 'help' pour voir les commandes disponibles.");
+                conn.send("Type d'événement inconnu : " + eventType);
                 return null;
         }
     }
