@@ -11,12 +11,10 @@ import java.util.List;
 
 public class BuyBuilderEvent extends PlayerEvent{
     private int value;
-    private int cost;
 
     public BuyBuilderEvent(String playerName, int value,int cost) {
         super(playerName);
         this.value = value;
-        this.cost = cost;
 
         super.getRules().addAll(List.of(
                 new ValidPlayerRule(getPlayerName()),
