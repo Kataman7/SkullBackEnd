@@ -7,9 +7,9 @@ import main.domain.rules.ValidPlayerRule;
 import javax.json.Json;
 import java.util.List;
 
-public class LeaveEvent extends PlayerEvent
+public class LeaveGameEvent extends PlayerEvent
 {
-    public LeaveEvent(String playerName)
+    public LeaveGameEvent(String playerName)
     {
         super(playerName);
 

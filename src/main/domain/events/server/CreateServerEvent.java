@@ -5,7 +5,7 @@ import main.domain.model.Board;
 
 import javax.json.Json;
 
-public class CreateEvent extends GameEvent
+public class CreateServerEvent extends GameEvent
 {
     @Override
     public void apply(Board board)

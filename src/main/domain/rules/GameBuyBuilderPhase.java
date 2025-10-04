@@ -1,8 +1,8 @@
 package main.domain.rules;
 
-import main.domain.events.game.GameEvent;
 import main.domain.model.Board;
-import main.domain.model.Phases;
+import main.domain.enums.Phases;
+import main.domain.enums.ErrorCodes;
 
 public class GameBuyBuilderPhase implements GameRule {
 
@@ -14,7 +14,7 @@ public class GameBuyBuilderPhase implements GameRule {
 
     @Override
     public int getCode() {
-        return RuleCodes.GAME_EMPTY.ordinal();
+        return ErrorCodes.GAME_EMPTY.ordinal();
     }
 
 

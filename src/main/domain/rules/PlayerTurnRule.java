@@ -1,6 +1,7 @@
 package main.domain.rules;
 
 import main.domain.model.Board;
+import main.domain.enums.ErrorCodes;
 
 public class PlayerTurnRule extends PlayerRule
 {
@@ -15,6 +16,6 @@ public class PlayerTurnRule extends PlayerRule
 
     @Override
     public int getCode() {
-        return RuleCodes.PLAYER_TURN.ordinal();
+        return ErrorCodes.PLAYER_TURN.ordinal();
     }
 }

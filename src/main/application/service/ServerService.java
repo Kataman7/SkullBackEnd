@@ -6,7 +6,7 @@ import main.adapters.out.saver.InMemoryGameSaver;
 import main.application.port.in.GameCommandHandler;
 import main.application.port.out.GameStateSaver;
 import main.domain.events.game.GameEvent;
-import main.domain.events.server.CreateEvent;
+import main.domain.events.server.CreateServerEvent;
 import main.domain.model.Board;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class ServerService implements GameCommandHandler {
 
     @Override
     public void handle(GameEvent event) {
-        if (event instanceof CreateEvent) {
+        if (event instanceof CreateServerEvent) {
         try {
             // Création d'un nouveau jeu
             int port = createSession();

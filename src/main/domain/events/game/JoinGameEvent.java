@@ -9,9 +9,9 @@ import main.domain.rules.ValidPlayerRule;
 import javax.json.Json;
 import java.util.List;
 
-public class JoinEvent extends PlayerEvent
+public class JoinGameEvent extends PlayerEvent
 {
-    public JoinEvent(String playerName)
+    public JoinGameEvent(String playerName)
     {
         super(playerName);
         super.getRules().addAll(List.of(

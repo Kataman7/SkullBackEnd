@@ -1,7 +1,8 @@
 package main.domain.rules;
 
 import main.domain.model.Board;
-import main.domain.model.Phases;
+import main.domain.enums.Phases;
+import main.domain.enums.ErrorCodes;
 
 public class GameBuyBuildPhase implements GameRule {
 
@@ -12,7 +13,7 @@ public class GameBuyBuildPhase implements GameRule {
     }
 
     @Override
-    public int getCode() {return RuleCodes.GAME_EMPTY.ordinal();
+    public int getCode() {return ErrorCodes.GAME_EMPTY.ordinal();
     }
 
 

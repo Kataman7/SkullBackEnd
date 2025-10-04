@@ -1,6 +1,6 @@
-package main.domain.rules;
+package main.domain.enums;
 
-public enum RuleCodes
+public enum ErrorCodes
 {
     GAME_EMPTY,
     GAME_FULL,

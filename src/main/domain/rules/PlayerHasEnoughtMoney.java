@@ -1,6 +1,7 @@
 package main.domain.rules;
 
 import main.domain.model.Player;
+import main.domain.enums.ErrorCodes;
 
 public class PlayerHasEnoughtMoney extends PlayerRule{
     private final int amount;
@@ -18,6 +19,6 @@ public class PlayerHasEnoughtMoney extends PlayerRule{
 
     @Override
     public int getCode() {
-        return RuleCodes.PLAYER_HAS_ENOUGHT_MONEY.ordinal();
+        return ErrorCodes.PLAYER_HAS_ENOUGHT_MONEY.ordinal();
     }
 }

@@ -1,6 +1,7 @@
 package main.domain.rules;
 
 import main.domain.model.Board;
+import main.domain.enums.ErrorCodes;
 
 public class GameFullRule implements GameRule
 {
@@ -11,6 +12,6 @@ public class GameFullRule implements GameRule
 
     @Override
     public int getCode() {
-        return RuleCodes.GAME_FULL.ordinal();
+        return ErrorCodes.GAME_FULL.ordinal();
     }
 }

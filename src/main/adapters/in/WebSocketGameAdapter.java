@@ -4,9 +4,9 @@ package main.adapters.in;
 import main.adapters.out.broadcaster.WebSocketBroadcaster;
 import main.application.port.in.GameCommandHandler;
 import main.domain.events.game.GameEvent;
-import main.domain.events.game.JoinEvent;
-import main.domain.events.game.LeaveEvent;
-import main.domain.events.server.CreateEvent;
+import main.domain.events.game.JoinGameEvent;
+import main.domain.events.game.LeaveGameEvent;
+import main.domain.events.server.CreateServerEvent;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -36,7 +36,7 @@ public class WebSocketGameAdapter extends WebSocketServer {
         String playerName = connectedPlayers.remove(conn);
         broadcaster.removeConnection(conn);
         if (playerName != null) {
-            handler.handle(new LeaveEvent(playerName));
+            handler.handle(new LeaveGameEvent(playerName));
         }
     }
 
@@ -85,17 +85,17 @@ public class WebSocketGameAdapter extends WebSocketServer {
                 String playerName = jsonObject.getString("playerName", "");
                 // Ajoute d'autres paramètres optionnels ici si besoin
                 connectedPlayers.put(conn, playerName);
-                return new JoinEvent(playerName);
+                return new JoinGameEvent(playerName);
             }
             case "leave": {
                 String playerName = jsonObject.getString("playerName", "");
                 // Ajoute d'autres paramètres optionnels ici si besoin
                 connectedPlayers.remove(conn);
-                return new LeaveEvent(playerName);
+                return new LeaveGameEvent(playerName);
             }
             case "createserver": {
                 // Paramètres optionnels pour createServer si besoin
-                return new CreateEvent();
+                return new CreateServerEvent();
             }
             default:
                 conn.send("Type d'événement inconnu : " + eventType);

@@ -1,6 +1,7 @@
 package main.domain.rules;
 
 import main.domain.model.Board;
+import main.domain.enums.ErrorCodes;
 
 public class ValidPlayerRule extends PlayerRule
 {
@@ -15,6 +16,6 @@ public class ValidPlayerRule extends PlayerRule
 
     @Override
     public int getCode() {
-        return RuleCodes.VALID_PLAYER.ordinal();
+        return ErrorCodes.VALID_PLAYER.ordinal();
     }
 }

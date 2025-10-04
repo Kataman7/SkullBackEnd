@@ -1,4 +1,4 @@
-package main.domain.model;
+package main.domain.enums;
 
 public enum Phases {
     Lobby,

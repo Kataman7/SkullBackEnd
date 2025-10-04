@@ -1,5 +1,7 @@
 package main.domain.model;
 
+import main.domain.enums.Phases;
+
 import java.util.ArrayList;
 
 public class Board {
