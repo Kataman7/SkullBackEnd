@@ -9,7 +9,7 @@ public class Build {
     private final int sizeX;
     private final int sizeY;
     private final boolean isreplaceable;
-    private ArrayList<Builder> builder;
+    private ArrayList<Builder> builders;
 
     public Build(String name, int coast, int[] ressources, int sizeX, int sizeY, boolean isreplaceable) {
         this.name = name;
@@ -18,7 +18,7 @@ public class Build {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.isreplaceable = isreplaceable;
-        this.builder =  new ArrayList<Builder>();
+        this.builders =  new ArrayList<Builder>();
     }
     public String getName() {
         return name;
@@ -38,11 +38,11 @@ public class Build {
     public boolean isReplaceable() {
         return isreplaceable;
     }
-    public ArrayList<Builder> getBuilder() {
-        return builder;
+    public ArrayList<Builder> getBuilders() {
+        return builders;
     }
     public void addBuilder(Builder b) {
-        this.builder.add(b);
+        this.builders.add(b);
     }
 
 

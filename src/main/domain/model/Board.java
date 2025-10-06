@@ -15,7 +15,7 @@ public class Board {
     private Phases phase;
     private int playedPlayersCount;
     private ArrayList<Message> chat;
-
+    private final GameMap gameMap;
 
     public Board()
     {
@@ -24,6 +24,10 @@ public class Board {
         builds = new ArrayList<>();
         builders = new ArrayList<>();
         phase = Phases.Lobby;
+        playedPlayersCount = 0;
+        chat = new ArrayList<>();
+        gameMap = new GameMap(40, 40);
+        deckNumber = 4;
     }
     public void addPlayer(String playerName)
     {
