@@ -48,6 +48,14 @@ public class Player
     public ArrayList<Build> getBuilds() {
         return builds;
     }
+    public Build getBuildByName(String name) {
+        for (Build build : builds) {
+            if (build.getName().equals(name)) {
+                return build;
+            }
+        }
+        return null;
+    }
     public ArrayList<Builder> getBuilders() {
         return builders;
     }
@@ -57,6 +65,15 @@ public class Player
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public Builder getBuilderByName(String name) {
+        for (Builder builder : builders) {
+            if (builder.getName().equals(name)) {
+                return builder;
+            }
+        }
+        return null;
     }
 
 
