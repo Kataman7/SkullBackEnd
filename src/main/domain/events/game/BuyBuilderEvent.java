@@ -3,7 +3,7 @@ package main.domain.events.game;
 import main.domain.model.Board;
 import main.domain.model.Builder;
 import main.domain.rules.GameBuyBuilderPhase;
-import main.domain.rules.PlayerHasEnoughtMoney;
+import main.domain.rules.PlayerHasEnoughtMoneyRule;
 import main.domain.rules.PlayerTurnRule;
 import main.domain.rules.ValidPlayerRule;
 
@@ -23,7 +23,7 @@ public class BuyBuilderEvent extends PlayerEvent {
                 new ValidPlayerRule(getPlayerName()),
                 new PlayerTurnRule(getPlayerName()),
                 new GameBuyBuilderPhase(),
-                new PlayerHasEnoughtMoney(getPlayerName(), cost)
+                new PlayerHasEnoughtMoneyRule(getPlayerName(), cost)
         ));
     }
 

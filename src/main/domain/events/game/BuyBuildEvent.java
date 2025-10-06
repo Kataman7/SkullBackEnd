@@ -2,7 +2,6 @@ package main.domain.events.game;
 
 import main.domain.model.Board;
 import main.domain.model.Build;
-import main.domain.model.Builder;
 import main.domain.rules.*;
 
 import javax.json.Json;
@@ -21,7 +20,7 @@ public class BuyBuildEvent extends PlayerEvent{
                 new ValidPlayerRule(getPlayerName()),
                 new PlayerTurnRule(getPlayerName()),
                 new GameBuyBuildPhase(),
-                new PlayerHasEnoughtMoney(getPlayerName(), cost)
+                new PlayerHasEnoughtMoneyRule(getPlayerName(), cost)
         ));
     }
 
@@ -29,7 +28,7 @@ public class BuyBuildEvent extends PlayerEvent{
     public void apply(Board board) {
         var player = board.getPlayers().getByName(getPlayerName());
         Build build = board.getBuildReveal().get(value);
-        player.setMoney(player.getMoney() - build.getCoast());
+        player.setMoney(player.getMoney() - build.getReward());
         player.getBuilds().add(build);
         board.setPlayedPlayersCount(board.getPlayedPlayersCount() + 1);
     }

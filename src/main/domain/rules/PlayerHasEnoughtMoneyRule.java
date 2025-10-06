@@ -3,10 +3,10 @@ package main.domain.rules;
 import main.domain.model.Player;
 import main.domain.enums.ErrorCodes;
 
-public class PlayerHasEnoughtMoney extends PlayerRule{
+public class PlayerHasEnoughtMoneyRule extends PlayerRule{
     private final int amount;
 
-    public PlayerHasEnoughtMoney(String playerName, int amount) {
+    public PlayerHasEnoughtMoneyRule(String playerName, int amount) {
         super(playerName);
         this.amount = amount;
     }
