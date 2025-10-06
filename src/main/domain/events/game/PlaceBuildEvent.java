@@ -20,6 +20,7 @@ public class PlaceBuildEvent extends PlayerEvent {
         this.y = y;
 
         super.getRules().addAll(List.of(
+                new GameBuildPhase(),
                 new ValidPlayerRule(playerName),
                 new ValidBuildIndexRule(playerName, buildIndex),
                 new ValidMapPositionRule(x, y, sizeX, sizeY)
