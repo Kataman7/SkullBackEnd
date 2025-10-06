@@ -14,7 +14,9 @@ public class Board {
     private int deckNumber;
     private Phases phase;
     private int playedPlayersCount;
-    private ArrayList<Message> chat;
+    private Chat chat;
+
+
     private final GameMap gameMap;
 
     public Board()
@@ -24,8 +26,9 @@ public class Board {
         builds = new ArrayList<>();
         builders = new ArrayList<>();
         phase = Phases.Lobby;
+        chat = new Chat();
+
         playedPlayersCount = 0;
-        chat = new ArrayList<>();
         gameMap = new GameMap(40, 40);
         deckNumber = 4;
     }
@@ -82,10 +85,7 @@ public class Board {
     public GameMap getGameMap() {
         return gameMap;
     }
-    public  ArrayList<Message> getChat() {
+    public Chat getChat() {
         return chat;
-    }
-    public void addMessageToChat(Message message) {
-        this.chat.add(message);
     }
 }
