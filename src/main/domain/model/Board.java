@@ -3,6 +3,7 @@ package main.domain.model;
 import main.domain.enums.Phases;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Board {
 
@@ -13,6 +14,8 @@ public class Board {
     private int deckNumber;
     private Phases phase;
     private int playedPlayersCount;
+    private ArrayList<Message> chat;
+
 
     public Board()
     {
@@ -21,6 +24,8 @@ public class Board {
         builds = new ArrayList<>();
         builders = new ArrayList<>();
         phase = Phases.Lobby;
+        chat = new ArrayList<>();
+
     }
     public void addPlayer(String playerName)
     {
@@ -70,5 +75,11 @@ public class Board {
 
     public int getPlayedPlayersCount() {
         return playedPlayersCount;
+    }
+    public  ArrayList<Message> getChat() {
+        return chat;
+    }
+    public void addMessageToChat(Message message) {
+        this.chat.add(message);
     }
 }
