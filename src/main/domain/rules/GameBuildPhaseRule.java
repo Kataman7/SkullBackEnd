@@ -1,6 +1,6 @@
 package main.domain.rules;
 
-public class GameBuildPhase implements GameRule {
+public class GameBuildPhaseRule implements GameRule {
     @Override
     public boolean isApplicable(main.domain.model.Board board) {
         return board.getPhase().equals(main.domain.enums.Phases.Build);

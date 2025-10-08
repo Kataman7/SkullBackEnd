@@ -7,7 +7,7 @@ import main.domain.rules.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class GameRule {
+public class GameRuleTest {
 
     private static Player player1, player2;
     private static Board board;
@@ -34,7 +34,7 @@ public class GameRule {
     @Test
     void GameBuildPhase(){
         board.setPhase(Phases.Build);
-        GameBuildPhase rule1 = new GameBuildPhase();
+        GameBuildPhaseRule rule1 = new GameBuildPhaseRule();
         assert (rule1.isApplicable(board));
         board.setPhase(Phases.Lobby);
         assert (!rule1.isApplicable(board));
@@ -42,7 +42,7 @@ public class GameRule {
     @Test
     void GameBuyBuilderPhase(){
         board.setPhase(Phases.Buy_Builders);
-        GameBuyBuilderPhase rule1 = new GameBuyBuilderPhase();
+        GameBuyBuilderPhaseRule rule1 = new GameBuyBuilderPhaseRule();
         assert (rule1.isApplicable(board));
         board.setPhase(Phases.Lobby);
         assert (!rule1.isApplicable(board));

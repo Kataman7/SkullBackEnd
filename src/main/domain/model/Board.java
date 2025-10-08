@@ -5,7 +5,7 @@ import main.domain.enums.Phases;
 import java.util.ArrayList;
 import java.util.Timer;
 
-public class Board {
+public class Board implements Model {
 
     private final PlayerList players;
     private Player winner;

@@ -2,7 +2,7 @@ package main.domain.model;
 
 import java.util.*;
 
-public class Player
+public class Player implements Model
 {
     private final String name;
     private int score;

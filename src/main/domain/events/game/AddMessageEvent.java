@@ -6,10 +6,10 @@ import main.domain.rules.ValidPlayerRule;
 
 import java.util.List;
 
-public class AddMessage extends GameEvent{
+public class AddMessageEvent extends GameEvent{
 
     private Message message;
-    public AddMessage(Message message) {
+    public AddMessageEvent(Message message) {
         this.message = message;
         super.getRules().addAll(List.of(new ValidPlayerRule(message.getExpeditor().getName())));
     }

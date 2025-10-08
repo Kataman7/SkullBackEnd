@@ -2,14 +2,14 @@ package main.domain.model;
 
 import java.util.ArrayList;
 
-public class Build {
+public class Build implements Model {
     private final String name;
     private final int reward;
     private final Ressources ressources;
     private final int sizeX;
     private final int sizeY;
     private final boolean isreplaceable;
-    private ArrayList<Builder> builders;
+    private boolean isInfected = false;
 
     public Build(String name, int coast, int[] ressources, int sizeX, int sizeY, boolean isreplaceable) {
         this.name = name;
@@ -18,7 +18,6 @@ public class Build {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.isreplaceable = isreplaceable;
-        this.builders =  new ArrayList<Builder>();
     }
     public String getName() {
         return name;
@@ -38,12 +37,13 @@ public class Build {
     public boolean isReplaceable() {
         return isreplaceable;
     }
-    public ArrayList<Builder> getBuilders() {
-        return builders;
+    public boolean isBuilt() {
+        return ressources.isEmpty();
     }
-    public void addBuilder(Builder b) {
-        this.builders.add(b);
+    public boolean isInfected() {
+        return isInfected;
     }
-
-
+    public void setInfected(boolean infected) {
+        isInfected = infected;
+    }
 }

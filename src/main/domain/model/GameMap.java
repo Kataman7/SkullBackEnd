@@ -1,6 +1,6 @@
 package main.domain.model;
 
-public class GameMap {
+public class GameMap implements Model {
     private final int sizeX;
     private final int sizeY;
     private final BuildCell[][] cells;

@@ -1,28 +1,27 @@
 package main.domain.model;
 
-public class Ressources {
-    private int bois;
-    private int pierre;
-    private int or;
-    private int nourriture;
+public class Ressources implements Model {
+    private int res1;
+    private int res2;
+    private int res3;
+    private int res4;
 
     public Ressources(int[] ressources) {
-        this.bois = ressources[0];
-        this.pierre = ressources[1];
-        this.or = ressources[2];
-        this.nourriture = ressources[3];
+        this.res1 = ressources[0];
+        this.res2 = ressources[1];
+        this.res3 = ressources[2];
+        this.res4 = ressources[3];
     }
 
-    public int getBois() {
-        return bois;
+    public boolean isEmpty()
+    {
+        return res1 <= 0 && res2 <= 0 && res3 <= 0 && res4 <= 0;
     }
-    public int getPierre() {
-        return pierre;
-    }
-    public int getOr() {
-        return or;
-    }
-    public int getNourriture() {
-        return nourriture;
+
+    public void remove(Ressources r) {
+        this.res1 -= r.res1;
+        this.res2 -= r.res2;
+        this.res3 -= r.res3;
+        this.res4 -= r.res4;
     }
 }

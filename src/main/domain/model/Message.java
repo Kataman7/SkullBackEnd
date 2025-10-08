@@ -1,6 +1,6 @@
 package main.domain.model;
 
-public class Message {
+public class Message implements Model {
     private Player expeditor;
     private String content;
     public Message(Player expeditor, String content) {

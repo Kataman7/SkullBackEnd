@@ -5,7 +5,7 @@ import main.domain.rules.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PlayerRule {
+class PlayerRuleTest {
     private static Player player1, player2;
     private static Board board;
     private static Build build1, build2;
@@ -63,22 +63,22 @@ class PlayerRule {
 
         player1.getBuilds().add(build1);
         player1.getBuilds().add(build2);
-        PlayerHaveBuild rule1 = new PlayerHaveBuild("player1", build1);
+        PlayerHaveBuildRule rule1 = new PlayerHaveBuildRule("player1", 1);
         assert (rule1.isApplicable(board));
-        PlayerHaveBuild rule2 = new PlayerHaveBuild("player1", build2);
+        PlayerHaveBuildRule rule2 = new PlayerHaveBuildRule("player1", 2);
         assert (rule2.isApplicable(board));
-        PlayerHaveBuild rule3 = new PlayerHaveBuild("player1", new Build("build3", 10, ressources2, 2, 2, true));
+        PlayerHaveBuildRule rule3 = new PlayerHaveBuildRule("player1", 3);
         assert (!rule3.isApplicable(board));
     }
     @Test
     void playerHaveBuilderRule()  {
         player1.getBuilders().add(builder);
         player1.getBuilders().add(builder2);
-        PlayerHaveBuilder rule1 = new PlayerHaveBuilder("player1", builder);
+        PlayerHaveBuilderRule rule1 = new PlayerHaveBuilderRule("player1", 1);
         assert (rule1.isApplicable(board));
-        PlayerHaveBuilder rule2 = new PlayerHaveBuilder("player1", builder2);
+        PlayerHaveBuilderRule rule2 = new PlayerHaveBuilderRule("player1", 2);
         assert (rule2.isApplicable(board));
-        PlayerHaveBuilder rule3 = new PlayerHaveBuilder("player1", new Builder("build3", 10, ressources2));
+        PlayerHaveBuilderRule rule3 = new PlayerHaveBuilderRule("player1", 3);
         assert (!rule3.isApplicable(board));
     }
 }

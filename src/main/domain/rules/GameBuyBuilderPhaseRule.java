@@ -4,7 +4,7 @@ import main.domain.model.Board;
 import main.domain.enums.Phases;
 import main.domain.enums.ErrorCodes;
 
-public class GameBuyBuilderPhase implements GameRule {
+public class GameBuyBuilderPhaseRule implements GameRule {
 
 
     @Override
