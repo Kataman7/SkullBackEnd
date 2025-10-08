@@ -18,7 +18,6 @@ public class AddMessageEvent extends GameEvent{
     @Override
     public void apply(Board board) {
         board.getChat().addMessage(message);
-
     }
 
     @Override
