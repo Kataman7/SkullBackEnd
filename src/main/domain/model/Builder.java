@@ -2,21 +2,21 @@ package main.domain.model;
 
 public class Builder implements Model {
     private String name;
-    private int coast;
+    private int cost;
     private final Ressources ressources;
     private Build assignedBuild = null;
     private boolean isInfected = false;
 
-    public Builder(String name, int coast, int[] ressources) {
+    public Builder(String name, int cost, int[] ressources) {
         this.name = name;
-        this.coast = coast;
+        this.cost = cost;
         this.ressources = new Ressources(ressources);
     }
     public String getName() {
         return name;
     }
-    public int getCoast() {
-        return coast;
+    public int getCost() {
+        return cost;
     }
     public Ressources getRessources() {
         return ressources;

@@ -10,7 +10,7 @@ public class Board implements Model {
     private Player winner;
     private ArrayList<Build> builds;
     private ArrayList<Builder> builders;
-    private int deckNumber;
+    private final int deckNumber;
     private Phases phase;
     private int playedPlayersCount;
     private Chat chat;
@@ -86,5 +86,8 @@ public class Board implements Model {
     }
     public Chat getChat() {
         return chat;
+    }
+    public int getDeckNumber() {
+        return deckNumber;
     }
 }

@@ -9,18 +9,19 @@ import javax.json.Json;
 import java.util.List;
 
 public class BuyBuildEvent extends PlayerEvent{
-    private final int value;
+    private final int buildIndex;
     private final int cost;
 
-    public BuyBuildEvent(String playerName, int value, int cost) {
+    public BuyBuildEvent(String playerName, int buildIndex, int cost) {
         super(playerName);
-        this.value = value;
+        this.buildIndex = buildIndex;
         this.cost = cost;
 
         super.getRules().addAll(List.of(
+                new ValidGamePhaseRule(Phases.BUY_BUILDS),
+                new ValidDeckBuildIndexRule(buildIndex),
                 new ValidPlayerRule(getPlayerName()),
                 new PlayerTurnRule(getPlayerName()),
-                new ValidGamePhaseRule(Phases.BUY_BUILDS),
                 new PlayerHaveEnoughtMoneyRule(getPlayerName(), cost)
         ));
     }
@@ -28,7 +29,7 @@ public class BuyBuildEvent extends PlayerEvent{
     @Override
     public void apply(Board board) {
         var player = board.getPlayers().getByName(getPlayerName());
-        Build build = board.getBuildReveal().get(value);
+        Build build = board.getBuildReveal().get(buildIndex);
         player.setMoney(player.getMoney() - build.getReward());
         player.getBuilds().add(build);
         board.setPlayedPlayersCount(board.getPlayedPlayersCount() + 1);
@@ -39,10 +40,9 @@ public class BuyBuildEvent extends PlayerEvent{
         return Json.createObjectBuilder()
                 .add("event", "buyBuild")
                 .add("player", getPlayerName())
-                .add("value", value)
+                .add("value", buildIndex)
                 .add("cost", cost)
                 .build()
                 .toString();
     }
-
 }
