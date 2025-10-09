@@ -3,7 +3,6 @@ package main.domain.model;
 import main.domain.enums.Phases;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class Board implements Model {
 
@@ -25,7 +24,7 @@ public class Board implements Model {
         winner = null;
         builds = new ArrayList<>();
         builders = new ArrayList<>();
-        phase = Phases.Lobby;
+        phase = Phases.LOBBY;
         chat = new Chat();
 
         playedPlayersCount = 0;

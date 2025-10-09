@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Build implements Model {
     private final String name;
-    private final int reward;
+    private int reward;
     private final Ressources ressources;
     private final int sizeX;
     private final int sizeY;
@@ -24,6 +24,11 @@ public class Build implements Model {
     }
     public int getReward() {
         return reward;
+    }
+    public int clearReward() {
+        int r = reward;
+        reward = 0;
+        return r;
     }
     public Ressources getRessources() {
         return ressources;

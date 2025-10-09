@@ -1,5 +1,6 @@
 package main.domain.events.game;
 
+import main.domain.enums.Phases;
 import main.domain.model.Board;
 import main.domain.model.Build;
 import main.domain.model.GameMap;
@@ -20,9 +21,9 @@ public class PlaceBuildEvent extends PlayerEvent {
         this.y = y;
 
         super.getRules().addAll(List.of(
-                new GameBuildPhaseRule(),
+                new ValidGamePhaseRule(Phases.BUILD),
                 new ValidPlayerRule(playerName),
-                new ValidBuildIndexRule(playerName, buildIndex),
+                new ValidPlayerBuildIndexRule(playerName, buildIndex),
                 new ValidMapPositionRule(x, y, sizeX, sizeY)
         ));
     }

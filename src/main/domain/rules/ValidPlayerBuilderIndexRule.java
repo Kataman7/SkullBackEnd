@@ -2,10 +2,10 @@ package main.domain.rules;
 
 import main.domain.model.Player;
 
-public class PlayerHaveBuilderRule extends PlayerRule {
+public class ValidPlayerBuilderIndexRule extends PlayerRule {
     private final int builderIndex;
 
-    public PlayerHaveBuilderRule(String playerName, int builderIndex) {
+    public ValidPlayerBuilderIndexRule(String playerName, int builderIndex) {
         super(playerName);
         this.builderIndex = builderIndex;
     }

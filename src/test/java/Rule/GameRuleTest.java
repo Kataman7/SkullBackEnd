@@ -33,26 +33,26 @@ public class GameRuleTest {
     }
     @Test
     void GameBuildPhase(){
-        board.setPhase(Phases.Build);
-        GameBuildPhaseRule rule1 = new GameBuildPhaseRule();
+        board.setPhase(Phases.BUILD);
+        ValidGamePhaseRule rule1 = new ValidGamePhaseRule();
         assert (rule1.isApplicable(board));
-        board.setPhase(Phases.Lobby);
+        board.setPhase(Phases.LOBBY);
         assert (!rule1.isApplicable(board));
     }
     @Test
     void GameBuyBuilderPhase(){
-        board.setPhase(Phases.Buy_Builders);
+        board.setPhase(Phases.BUY_BUILDERS);
         GameBuyBuilderPhaseRule rule1 = new GameBuyBuilderPhaseRule();
         assert (rule1.isApplicable(board));
-        board.setPhase(Phases.Lobby);
+        board.setPhase(Phases.LOBBY);
         assert (!rule1.isApplicable(board));
     }
     @Test
     void GameBuyBuildPhase(){
-        board.setPhase(Phases.Buy_Builds);
+        board.setPhase(Phases.BUY_BUILDS);
         GameBuyBuildPhase rule1 = new GameBuyBuildPhase();
         assert (rule1.isApplicable(board));
-        board.setPhase(Phases.Lobby);
+        board.setPhase(Phases.LOBBY);
         assert (!rule1.isApplicable(board));
     }
     @Test
@@ -68,7 +68,7 @@ public class GameRuleTest {
         for (int i = 0; i < 17; i++) {
             board2.addPlayer("player"+i);
         }
-        GameFullRule rule1 = new GameFullRule();
+        GameNotFullRule rule1 = new GameNotFullRule();
         assert (!rule1.isApplicable(board2));
         assert (rule1.isApplicable(board));
     }

@@ -1,5 +1,6 @@
 package main.domain.events.game;
 
+import main.domain.enums.Phases;
 import main.domain.model.Board;
 import main.domain.model.Build;
 import main.domain.rules.*;
@@ -19,8 +20,8 @@ public class BuyBuildEvent extends PlayerEvent{
         super.getRules().addAll(List.of(
                 new ValidPlayerRule(getPlayerName()),
                 new PlayerTurnRule(getPlayerName()),
-                new GameBuyBuildPhase(),
-                new PlayerHasEnoughtMoneyRule(getPlayerName(), cost)
+                new ValidGamePhaseRule(Phases.BUY_BUILDS),
+                new PlayerHaveEnoughtMoneyRule(getPlayerName(), cost)
         ));
     }
 

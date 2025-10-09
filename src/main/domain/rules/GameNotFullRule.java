@@ -1,21 +1,17 @@
 package main.domain.rules;
 
 import main.domain.model.Board;
-import main.domain.enums.Phases;
 import main.domain.enums.ErrorCodes;
 
-public class GameBuyBuilderPhaseRule implements GameRule {
-
-
+public class GameNotFullRule implements GameRule
+{
     @Override
     public boolean isApplicable(Board board) {
-        return board.getPhase().equals( Phases.Buy_Builders);
+        return board.getPlayers().size() <= 16;
     }
 
     @Override
     public int getCode() {
-        return ErrorCodes.GAME_EMPTY.ordinal();
+        return ErrorCodes.GAME_FULL.ordinal();
     }
-
-
 }

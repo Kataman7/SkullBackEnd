@@ -52,9 +52,9 @@ class PlayerRuleTest {
     @Test
     void playerHasenoughtMoneyRule() {
         player1.setMoney(10);
-        PlayerHasEnoughtMoneyRule rule1 = new PlayerHasEnoughtMoneyRule("player1", 5);
+        PlayerHaveEnoughtMoneyRule rule1 = new PlayerHaveEnoughtMoneyRule("player1", 5);
         assert (rule1.isApplicable(board));
-        PlayerHasEnoughtMoneyRule rule2 = new PlayerHasEnoughtMoneyRule("player1", 15);
+        PlayerHaveEnoughtMoneyRule rule2 = new PlayerHaveEnoughtMoneyRule("player1", 15);
         assert (!rule2.isApplicable(board));
     }
 
@@ -74,11 +74,11 @@ class PlayerRuleTest {
     void playerHaveBuilderRule()  {
         player1.getBuilders().add(builder);
         player1.getBuilders().add(builder2);
-        PlayerHaveBuilderRule rule1 = new PlayerHaveBuilderRule("player1", 1);
+        ValidPlayerBuilderIndexRule rule1 = new ValidPlayerBuilderIndexRule("player1", 1);
         assert (rule1.isApplicable(board));
-        PlayerHaveBuilderRule rule2 = new PlayerHaveBuilderRule("player1", 2);
+        ValidPlayerBuilderIndexRule rule2 = new ValidPlayerBuilderIndexRule("player1", 2);
         assert (rule2.isApplicable(board));
-        PlayerHaveBuilderRule rule3 = new PlayerHaveBuilderRule("player1", 3);
+        ValidPlayerBuilderIndexRule rule3 = new ValidPlayerBuilderIndexRule("player1", 3);
         assert (!rule3.isApplicable(board));
     }
 }

@@ -1,5 +1,6 @@
 package main.domain.events.game;
 
+import main.domain.enums.Phases;
 import main.domain.model.Board;
 import main.domain.model.Build;
 import main.domain.model.Builder;
@@ -17,13 +18,14 @@ public class AddBuilderBuildEvent extends PlayerEvent{
         super(playerName);
         this.buildIndex = buildIndex;
         this.builderIndex = builderIndex;
-        super.getRules().addAll(List.of(new ValidPlayerRule(getPlayerName()),
-                new PlayerTurnRule(getPlayerName()),
-                new GameBuildPhaseRule(),
-                new PlayerHaveBuildRule(getPlayerName(), buildIndex),
-                new PlayerHaveBuilderRule(getPlayerName(), builderIndex)));
-
+        super.getRules().addAll(List.of(
+                new ValidGamePhaseRule(Phases.BUILD),
+                new ValidPlayerRule(playerName),
+                new NotRule(new BuildRessourcesIsEmptyRule(playerName, buildIndex)),
+                new ValidPlayerBuildIndexRule(getPlayerName(), buildIndex),
+                new ValidPlayerBuilderIndexRule(getPlayerName(), builderIndex)));
     }
+
 
     @Override
     public void apply(Board board) {

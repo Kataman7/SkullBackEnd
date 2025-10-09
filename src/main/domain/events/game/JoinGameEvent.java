@@ -1,9 +1,11 @@
 package main.domain.events.game;
 
+import main.domain.enums.Phases;
 import main.domain.model.Board;
 import main.domain.model.Player;
-import main.domain.rules.GameFullRule;
+import main.domain.rules.GameNotFullRule;
 import main.domain.rules.NotRule;
+import main.domain.rules.ValidGamePhaseRule;
 import main.domain.rules.ValidPlayerRule;
 
 import javax.json.Json;
@@ -15,8 +17,9 @@ public class JoinGameEvent extends PlayerEvent
     {
         super(playerName);
         super.getRules().addAll(List.of(
-                new NotRule(new ValidPlayerRule(getPlayerName())),
-                new GameFullRule()
+                new ValidGamePhaseRule(Phases.LOBBY),
+                new GameNotFullRule(),
+                new NotRule(new ValidPlayerRule(getPlayerName()))
         ));
     }
 
