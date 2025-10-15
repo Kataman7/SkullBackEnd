@@ -1,6 +1,7 @@
 package main.domain.model;
 
 import java.util.*;
+import javax.json.*;
 
 public class Player implements Model
 {
@@ -76,5 +77,22 @@ public class Player implements Model
         return null;
     }
 
-
+    @Override
+    public JsonObject toJson() {
+        JsonArrayBuilder buildsArray = Json.createArrayBuilder();
+        for (Build build : builds) {
+            buildsArray.add(build.toJson());
+        }
+        JsonArrayBuilder buildersArray = Json.createArrayBuilder();
+        for (Builder builder : builders) {
+            buildersArray.add(builder.toJson());
+        }
+        return Json.createObjectBuilder()
+                .add("name", name)
+                .add("score", score)
+                .add("money", money)
+                .add("builds", buildsArray)
+                .add("builders", buildersArray)
+                .build();
+    }
 }

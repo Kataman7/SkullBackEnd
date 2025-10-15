@@ -28,7 +28,8 @@ public class WebSocketGameAdapter extends WebSocketServer {
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         broadcaster.addConnection(conn);
-        conn.send("Bienvenue ! Envoyez 'join Nom' ou 'leave Nom'.");
+        conn.send("true");
+        System.out.println("Nouvelle connexion de " + conn.getRemoteSocketAddress());
     }
 
     @Override

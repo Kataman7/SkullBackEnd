@@ -1,6 +1,8 @@
 package main.domain.model;
 
 import java.util.ArrayList;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 public class Build implements Model {
     private final String name;
@@ -50,5 +52,18 @@ public class Build implements Model {
     }
     public void setInfected(boolean infected) {
         isInfected = infected;
+    }
+
+    @Override
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+                .add("name", name)
+                .add("reward", reward)
+                .add("ressources", ressources.toJson())
+                .add("sizeX", sizeX)
+                .add("sizeY", sizeY)
+                .add("isreplaceable", isreplaceable)
+                .add("isInfected", isInfected)
+                .build();
     }
 }

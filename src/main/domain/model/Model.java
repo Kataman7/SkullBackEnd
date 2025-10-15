@@ -1,5 +1,7 @@
 package main.domain.model;
 
+import javax.json.JsonObject;
+
 public interface Model {
-    // Interface de base pour tous les modèles du domaine
+    JsonObject toJson();
 }

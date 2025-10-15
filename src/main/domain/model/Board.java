@@ -90,4 +90,31 @@ public class Board implements Model {
     public int getDeckNumber() {
         return deckNumber;
     }
+
+    @Override
+    public JsonObject toJson() {
+        JsonArrayBuilder buildsArray = Json.createArrayBuilder();
+        for (Build build : builds) {
+            buildsArray.add(build.toJson());
+        }
+        JsonArrayBuilder buildersArray = Json.createArrayBuilder();
+        for (Builder builder : builders) {
+            buildersArray.add(builder.toJson());
+        }
+        JsonObjectBuilder boardBuilder = Json.createObjectBuilder()
+                .add("players", players.toJson())
+                .add("builds", buildsArray)
+                .add("builders", buildersArray)
+                .add("deckNumber", deckNumber)
+                .add("phase", phase.name())
+                .add("playedPlayersCount", playedPlayersCount)
+                .add("chat", chat.toJson())
+                .add("gameMap", gameMap.toJson());
+        if (winner != null) {
+            boardBuilder.add("winner", winner.toJson());
+        } else {
+            boardBuilder.addNull("winner");
+        }
+        return boardBuilder.build();
+    }
 }

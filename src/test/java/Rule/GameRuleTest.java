@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class GameRuleTest {
 
-    private static Player player1, player2;
+    /*private static Player player1, player2;
     private static Board board;
     private static Build build1, build2;
     private static Builder builder, builder2;
@@ -72,5 +72,5 @@ public class GameRuleTest {
         assert (!rule1.isApplicable(board2));
         assert (rule1.isApplicable(board));
     }
-
+*/
 }

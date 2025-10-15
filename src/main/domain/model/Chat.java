@@ -1,6 +1,9 @@
 package main.domain.model;
 
 import java.util.ArrayList;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
 
 public class Chat implements Model {
     private ArrayList<Message> messages;
@@ -15,5 +18,14 @@ public class Chat implements Model {
         this.messages.add(message);
     }
 
-
+    @Override
+    public JsonObject toJson() {
+        JsonArrayBuilder messagesArray = Json.createArrayBuilder();
+        for (Message msg : messages) {
+            messagesArray.add(msg.toJson());
+        }
+        return Json.createObjectBuilder()
+                .add("messages", messagesArray)
+                .build();
+    }
 }

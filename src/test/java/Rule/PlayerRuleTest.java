@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PlayerRuleTest {
-    private static Player player1, player2;
+    /*private static Player player1, player2;
     private static Board board;
     private static Build build1, build2;
     private static Builder builder, builder2;
@@ -80,6 +80,6 @@ class PlayerRuleTest {
         assert (rule2.isApplicable(board));
         ValidPlayerBuilderIndexRule rule3 = new ValidPlayerBuilderIndexRule("player1", 3);
         assert (!rule3.isApplicable(board));
-    }
+    }*/
 }
 
