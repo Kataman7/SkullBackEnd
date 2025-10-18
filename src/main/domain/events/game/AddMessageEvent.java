@@ -8,14 +8,18 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import java.util.List;
 
-public class AddMessageEvent extends GameEvent{
+public class AddMessageEvent extends PlayerEvent
+{
+    private final Message message;
 
-    private Message message;
-    public AddMessageEvent(Message message) {
-        this.message = message;
-        super.getRules().addAll(List.of(new ValidPlayerRule(message.getExpeditor().getName())));
+    public AddMessageEvent(String playerName, String messageContent) {
+        super(playerName);
+        this.message = new Message(playerName, messageContent);
+
+        super.getRules().addAll(List.of(
+                new ValidPlayerRule(getPlayerName()) // il faudra faire des rules pour traiter les messages
+        ));
     }
-
 
     @Override
     public void apply(Board board) {
