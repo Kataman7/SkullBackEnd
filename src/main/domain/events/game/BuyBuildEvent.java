@@ -6,6 +6,7 @@ import main.domain.model.Build;
 import main.domain.rules.*;
 
 import javax.json.Json;
+import javax.json.JsonObject;
 import java.util.List;
 
 public class BuyBuildEvent extends PlayerEvent{
@@ -36,13 +37,13 @@ public class BuyBuildEvent extends PlayerEvent{
     }
 
     @Override
-    public String toJson() {
+    public JsonObject toJson() {
         return Json.createObjectBuilder()
+                .add("content", "event")
                 .add("event", "buyBuild")
                 .add("player", getPlayerName())
-                .add("value", buildIndex)
+                .add("buildIndex", buildIndex)
                 .add("cost", cost)
-                .build()
-                .toString();
+                .build();
     }
 }

@@ -2,18 +2,22 @@ package main.domain.model;
 
 import main.domain.enums.Phases;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import java.util.ArrayList;
 
 public class Board implements Model {
 
     private final PlayerList players;
     private Player winner;
-    private ArrayList<Build> builds;
-    private ArrayList<Builder> builders;
+    private final ArrayList<Build> builds;
+    private final ArrayList<Builder> builders;
     private final int deckNumber;
     private Phases phase;
     private int playedPlayersCount;
-    private Chat chat;
+    private final Chat chat;
 
 
     private final GameMap gameMap;
@@ -102,6 +106,7 @@ public class Board implements Model {
             buildersArray.add(builder.toJson());
         }
         JsonObjectBuilder boardBuilder = Json.createObjectBuilder()
+                .add("content", "boardUpdate")
                 .add("players", players.toJson())
                 .add("builds", buildsArray)
                 .add("builders", buildersArray)

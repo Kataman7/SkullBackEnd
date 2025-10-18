@@ -5,6 +5,7 @@ import main.domain.model.Player;
 import main.domain.rules.ValidPlayerRule;
 
 import javax.json.Json;
+import javax.json.JsonObject;
 import java.util.List;
 
 public class LeaveGameEvent extends PlayerEvent
@@ -26,11 +27,11 @@ public class LeaveGameEvent extends PlayerEvent
     }
 
     @Override
-    public String toJson() {
+    public JsonObject toJson() {
         return Json.createObjectBuilder()
+                .add("content", "event")
                 .add("event", "leave")
                 .add("player", getPlayerName())
-                .build()
-                .toString();
+                .build();
     }
 }

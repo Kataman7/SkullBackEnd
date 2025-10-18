@@ -3,6 +3,8 @@ package main.domain.events.game;
 import main.domain.model.Board;
 import main.domain.rules.GameRule;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +27,5 @@ public abstract class GameEvent
         return false;
     }
 
-    public abstract String toJson();
+    public abstract JsonObject toJson();
 }

@@ -7,6 +7,8 @@ import main.domain.model.Player;
 import main.domain.rules.*;
 
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 public class CompleteBuildEvent extends PlayerEvent
 {
@@ -39,7 +41,12 @@ public class CompleteBuildEvent extends PlayerEvent
     }
 
     @Override
-    public String toJson() {
-        return "";
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+                .add("content", "event")
+                .add("event", "completeBuild")
+                .add("player", getPlayerName())
+                .add("buildIndex", buildIndex)
+                .build();
     }
 }

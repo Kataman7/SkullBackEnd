@@ -7,6 +7,8 @@ import main.domain.model.Player;
 import main.domain.rules.*;
 
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 public class InfectBuilderEvent extends PlayerEvent
 {
@@ -34,7 +36,12 @@ public class InfectBuilderEvent extends PlayerEvent
     }
 
     @Override
-    public String toJson() {
-        return "";
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+                .add("content", "event")
+                .add("event", "infectBuilder")
+                .add("player", getPlayerName())
+                .add("builderIndex", builderIndex)
+                .build();
     }
 }

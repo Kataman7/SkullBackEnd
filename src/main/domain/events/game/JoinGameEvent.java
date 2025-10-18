@@ -9,6 +9,7 @@ import main.domain.rules.ValidGamePhaseRule;
 import main.domain.rules.ValidPlayerRule;
 
 import javax.json.Json;
+import javax.json.JsonObject;
 import java.util.List;
 
 public class JoinGameEvent extends PlayerEvent
@@ -30,11 +31,11 @@ public class JoinGameEvent extends PlayerEvent
     }
 
     @Override
-    public String toJson() {
+    public JsonObject toJson() {
         return Json.createObjectBuilder()
+                .add("content", "event")
                 .add("event", "join")
                 .add("player", getPlayerName())
-                .build()
-                .toString();
+                .build();
     }
 }

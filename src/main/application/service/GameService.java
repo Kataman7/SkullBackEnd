@@ -29,7 +29,8 @@ public class GameService implements GameCommandHandler {
         }
         event.apply(game);
         saver.save(game);
-        // notification
-        broadcaster.broadcast(event.toString());
+        // notification: on envoie d'abord l'événement puis l'état complet du board
+        broadcaster.broadcast(event.toJson().toString());
+        broadcaster.broadcast(game.toJson().toString());
     }
 }

@@ -8,6 +8,8 @@ import main.domain.model.Player;
 import main.domain.rules.*;
 
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 public class PlaceBuildEvent extends PlayerEvent {
     private final int buildIndex;
@@ -45,7 +47,14 @@ public class PlaceBuildEvent extends PlayerEvent {
     }
 
     @Override
-    public String toJson() {
-        return "";
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+                .add("content", "event")
+                .add("event", "placeBuild")
+                .add("player", getPlayerName())
+                .add("buildIndex", buildIndex)
+                .add("x", x)
+                .add("y", y)
+                .build();
     }
 }
