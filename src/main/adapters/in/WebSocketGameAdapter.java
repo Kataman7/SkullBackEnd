@@ -3,6 +3,7 @@ package main.adapters.in;
 
 import main.adapters.out.broadcaster.WebSocketBroadcaster;
 import main.application.port.in.GameCommandHandler;
+import main.domain.events.game.AddMessageEvent;
 import main.domain.events.game.GameEvent;
 import main.domain.events.game.JoinGameEvent;
 import main.domain.events.game.LeaveGameEvent;
@@ -82,6 +83,12 @@ public class WebSocketGameAdapter extends WebSocketServer {
         }
 
         switch (eventType.toLowerCase()) {
+            //{"event": "addMessage", "playerName": "Alice", "messageContent": "Hello everyone!"}
+            case "addmessage": {
+                String playerName = jsonObject.getString("playerName", "");
+                String messageContent = jsonObject.getString("messageContent", "");
+                return new AddMessageEvent(playerName, messageContent);
+            }
             case "join": {
                 String playerName = jsonObject.getString("playerName", "");
                 // Ajoute d'autres paramètres optionnels ici si besoin
